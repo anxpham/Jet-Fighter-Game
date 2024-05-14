@@ -4,7 +4,7 @@ from run import run
 pygame.font.init()
 
 pygame.display.set_caption("jet fighter")
-WIDTH, HEIGHT = 750, 750
+WIDTH, HEIGHT = 750, 900
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background-black.png")), (WIDTH, HEIGHT))
 
