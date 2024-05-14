@@ -14,7 +14,7 @@ def run(BG, WIDTH, HEIGHT, WIN):
     level = 0
     lives = 5
     main_font = pygame.font.SysFont("comicsans", 35)
-    lost_font = pygame.font.SysFont("comicsans", 45)
+    result_font = pygame.font.SysFont("comicsans", 45)
 
     enemies = []
     wave_length = 0
@@ -27,19 +27,29 @@ def run(BG, WIDTH, HEIGHT, WIN):
     clock = pygame.time.Clock()
 
     lost = False
-    lost_count = 0
+    win = False
+    pause_count = 0
+    win_count = 0
 
     # Main game loop
     while run:
         clock.tick(FPS)
-        redraw_window(WIN, BG, main_font, level, lives, lost, lost_font, WIDTH, enemies, player)
+        redraw_window(WIN, BG, main_font, level, lives, lost, win, result_font, WIDTH, enemies, player)
 
         if lives <= 0 or player.health <= 0:
             lost = True
-            lost_count += 1
+            pause_count += 1
 
         if lost:
-            if lost_count > FPS * 3:
+            if pause_count > FPS * 3:
+                run = False
+            else:
+                continue
+
+        if level == 10:
+            win = True
+            win_count += 1
+            if win_count > FPS * 3:
                 run = False
             else:
                 continue
@@ -49,7 +59,7 @@ def run(BG, WIDTH, HEIGHT, WIN):
             level += 1
             wave_length += 3
             for i in range(wave_length):
-                enemy = Enemy(random.randrange(50, WIDTH - 100), random.randrange(-500, -20), random.choice(["red", "blue", "green"]))
+                enemy = Enemy(random.randrange(50, WIDTH - 100), random.randrange(-800, -20), random.choice(["red", "blue", "green"]))
                 enemies.append(enemy)
 
 
