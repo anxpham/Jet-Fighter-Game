@@ -1,7 +1,6 @@
 import pygame
 from ship import Ship
 
-
 class Player(Ship):
 # playership
     def __init__(self, x, y, health=100):
