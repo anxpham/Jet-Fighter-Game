@@ -1,7 +1,6 @@
 import pygame
 
 def handle_events(player, player_vel, laser_vel, WIDTH, HEIGHT, enemies):
-    enemy_shoot = True
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return False
