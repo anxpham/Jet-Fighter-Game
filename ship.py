@@ -2,7 +2,7 @@ import pygame
 from laser import Laser
 
 class Ship:
-    COOLDOWN = 30
+    COOLDOWN = 45
 
     def __init__(self, x, y, health=100):
         self.x = x
